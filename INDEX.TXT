@@ -1,0 +1,8 @@
+# Retro online game player
+# auther:		tobie.nortje@navitas.co.za
+# my bio:		www.navitas.co.za/tobienortje
+
+
+
+# Simple scrip that read inputs from the serial port
+# The letters l for left and r for right is send by the Arduino on left and right keypresses

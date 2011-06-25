@@ -1,0 +1,28 @@
+import SendKeys
+import serial
+
+def Startp():
+    SendKeys.SendKeys("""
+        {LWIN}
+        {PAUSE 1}
+        
+        Chrome.exe{SPACE} http://www.pica-pic.com/#/merry_cook/{ENTER}
+        {PAUSE 10}
+             
+        
+    """)
+
+
+#serial port setup
+port = 5
+baud = 9600
+ser = serial.Serial(port, baud)
+Startp()
+
+while 1:
+  
+  val = ser.readline()
+  print val
+  
+  if val[0] == 'l': SendKeys.SendKeys("s")
+  if val[0] == 'r': SendKeys.SendKeys("k")
