@@ -1,0 +1,54 @@
+
+" play online games with an arduino controller "
+
+Retro online game player
+-----------------------------------------------
+	Author:		tobie.nortje@navitas.co.za
+	My bio:		www.navitas.co.za/tobienortje
+	VIDEO:		?
+
+Objective
+-----------------------------------------------
+	I recently spoke to some very interesting people. (http://www.21tanks.com)
+	They are a progressive company and the two guys Don and Trevor afforded me some face time to introduce the arduino to them. They play in many fields including sound, video, the arts etc. Since they operate in those fields and the arduino (sort of) originated within that context I thought it might be of interest to them. 
+
+	They found it intriguing and we started bouncing some wacky ideas around.
+
+	One of the ideas Don put forward was for they new offices. They want a massive LED TV that is connected to the web, and specifically the retro games you can find over at http://www.pica-pic.com/.
+
+	They want this TV in their reception room, with two massive buttons. The idea is that waiting people can play a quick game or two standing up while they wait.
+
+	I then quickly put this proof of concept together. It reads to buttons from the arduino.
+	The arduino debounces the keys in software and then sends a serial command to the PC.
+	The buttons are connected low to the arduino and pulled up high via a resistor when the button is pressed. 
+
+	Was the left of right button pushed. The python script would then intercept this and mimim a key press.
+
+	The game is loaded into the browser and started, and the fun begins.
+
+	I used an Arduino Mega. THis is so overkill, but all my other boards (UNO's) are busy logging data around the house
+	see my logger project and data over at - https://github.com/Tooblippe/Energy_Logger/wiki
+
+Instructions
+----------------------------------------------
+	1. Run the PC side python script.
+	   Dependencies
+	   ------------
+	   a. Sendkeys - you will need the module called SendKeys 
+	   b. Install by typing "easy_install SendKeys" or 
+	   c. download from http://www.rutherfurd.net/python/sendkeys/)
+	   d. obtain python from www.python.org
+	   
+	2. Upload the controller sketch to the Arduino board
+
+	3. Go to http://www.pica-pic.com/
+
+	4. Select one of the games that have a left and right option i.e. http://www.pica-pic.com/#/parachute/
+
+	5. select one from your keyboard to start the game
+
+	6. play with your arduino controller. The controller will send the keys "s" and "k" to the browser
+
+Notes
+----------------------------------------------
+	. The controller will send the keys to the active window.... So you could build a keyboard out of it :)
