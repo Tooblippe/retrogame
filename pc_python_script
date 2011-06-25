@@ -1,28 +1,35 @@
-import SendKeys
-import serial
+"""
+Retro online game player - play online games with an arduino controller 
 
-def Startp():
+	Author:		tobie.nortje@navitas.co.za
+	My bio:		www.navitas.co.za/tobienortje
+	Project:	https://github.com/Tooblippe/retrogame
+	Sendkeys:	http://www.rutherfurd.net/python/sendkeys/
+"""
+
+import SendKeys			# module to mimim key presses
+import serial			# module to handle the serial port
+
+
+port = 5				#this is serial port 6
+baud = 9600				#comms rate. you can change it but make sure the arduino is also set to new rate
+ser = serial.Serial(port, baud)		#start the serial comms
+
+
+def Startp():			# this little macro will start Chrome and then lauch the site
     SendKeys.SendKeys("""
         {LWIN}
         {PAUSE 1}
-        
         Chrome.exe{SPACE} http://www.pica-pic.com/#/merry_cook/{ENTER}
         {PAUSE 10}
-             
-        
-    """)
+     """)
 
+Startp()				#lauch the site
 
-#serial port setup
-port = 5
-baud = 9600
-ser = serial.Serial(port, baud)
-Startp()
-
-while 1:
+while 1:				#infinite loop
   
-  val = ser.readline()
-  print val
+  val = ser.readline()	#get the command
+  #print val			#print the value - for debugging just uncomment the line		
   
-  if val[0] == 'l': SendKeys.SendKeys("s")
-  if val[0] == 'r': SendKeys.SendKeys("k")
+  if val[0] == 'l': SendKeys.SendKeys("s")		#if the letter "l" is received send "s" to the browser
+  if val[0] == 'r': SendKeys.SendKeys("k")		#if the letter "r" is received send "k" to the browser

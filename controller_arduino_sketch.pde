@@ -1,6 +1,13 @@
+//
+Retro online game player - play online games with an arduino controller 
 
-int rightPin = 2;         // the number of the input pin
-int leftpin = 3;
+	Author:		tobie.nortje@navitas.co.za
+	My bio:		www.navitas.co.za/tobienortje
+	Project:	https://github.com/Tooblippe/retrogame
+//
+
+int rightPin = 2;         // the number of the input pins. Right button connected
+int leftpin = 3;			// left button
 
 
 int counter_right_right = 0;       // how many times we have seen new value
@@ -24,8 +31,6 @@ void setup()
   Serial.begin(9600); 
   pinMode(rightPin, INPUT);
   pinMode(leftpin, INPUT);
-  
-  //delay(5000);
   Serial.println("start"); 
 } 
 
@@ -33,6 +38,8 @@ void setup()
 void loop() {
   
     // If we have gone on to the next millisecond
+	// read and debounce right key
+	
   if(millis() != time_right)
   {
     reading_right = digitalRead(rightPin);
@@ -59,6 +66,7 @@ void loop() {
     time_right = millis();
   }
   
+  // read and debounce left key
   if(millis() != time_left){
     //----------
     reading_left  = digitalRead(leftpin);
@@ -86,15 +94,6 @@ void loop() {
   }
     //----------
     
-    
-    
-    
-    
-    
-  }
+}
   
-//  Serial.println("r");
-//  delay(100);
-//  Serial.println("l");
-//  delay(100);
 
